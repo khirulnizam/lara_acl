@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -11,31 +12,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        /*
-        // $this->call(UsersTableSeeder::class);
-		DB::table('users')->insert([
-            'name' => 'Khirulnizam',
-            'email' => 'kerul@gmail.com',
-            'password' => bcrypt('abc123'),
-        ]);
-		
-		DB::table('users')->insert([
-            'name' => 'Shaqirin',
-            'email' => 'shaq@gmail.com',
-            'password' => bcrypt('shaq123'),
-        ]);
-		
-		DB::table('users')->insert([
-            'name' => 'Azri',
-            'email' => 'azri@gmail.com',
-            'password' => bcrypt('azri123'),
-        ]);
-        */
-
         // Role comes before User seeder here.
-        //$this->call(RoleTableSeeder::class);
+        $this->call(RoleTableSeeder::class);
         // User seeder will use the roles above created.
         $this->call(UserTableSeeder::class);
+        // Training seeder dummy data
+        $this->call(TrainingTableSeeder::class);
+
     }
 
 

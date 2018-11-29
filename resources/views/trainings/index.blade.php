@@ -8,13 +8,14 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-10">
-
+				@if(Auth::user()->hasRole('admin')){
 				<div align="right">
 
 					<a href="{{ url('trainings/create') }}">Insert </a> ||
 					<a href="{{ url('trainings') }}">Listing for Update/Delete</a>
 
 				</div>
+				@endif
 				<div class="card info">
 
 					<div class="card-header">Listing Trainings for Update/Delete
@@ -49,8 +50,10 @@
 							<th>Training Name</th>
 							<th>Desc</th>
 							<th>Action</th>
+						@if(Auth::user()->hasRole('admin')){
 							<th></th>
 						  	<th></th>
+						@endif
 						  </tr>
 						</thead>
 						<tbody>
@@ -65,6 +68,7 @@
 									  <i class="fa fa-file-text-o"></i>
 								  </a>
 							  </td>
+							  @if(Auth::user()->hasRole('admin')){
 							  <td><a href="{{action('TrainingController@edit', $training['id'])}}"
 									 class="btn btn-warning btn-sm">
 									  <i class="fa fa-edit"></i>
@@ -77,7 +81,8 @@
 										  <i class="fa fa-remove"></i>
 									  </button>
 								  </form>
-							</td>
+								</td>
+								@endif
 
 						  </tr>
 						  @endforeach
