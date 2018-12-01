@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -10,6 +11,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
+    //this class handles User registration
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -63,10 +65,32 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }
+        $role_admin = Role::where('name', 'admin')->first();
+        $role_participant  = Role::where('name', 'participant')->first();
+
+        /*if ($data['user_role']=='admin') {
+            $user = new User();
+            $user->name = $data['name'];
+            $user->email = $data['email'];
+            $user->password = bcrypt($data['password']);
+            $user->save();
+            $user->roles()->attach($role_admin);
+        }
+        else if ($data['user_role']=='participant') {
+        */
+        $user = new User();
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->save();
+        $user->roles()->attach($role_participant);
+
+
+        return $user;
+
+    }//end create
+
+
+
+
 }

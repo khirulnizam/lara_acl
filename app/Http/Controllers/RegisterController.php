@@ -45,7 +45,7 @@ class RegisterController extends Controller
     public function create(array $data)
     {
         //as for roles
-        $user = User::create([
+        /*$user = User::create([
             'name'     => $data['name'],
             'email'    => $data['email'],
             'password' => bcrypt($data['password']),
@@ -54,6 +54,7 @@ class RegisterController extends Controller
             ->roles()
             ->attach(Role::where('name', 'admin')->first());
         return $user;
+        */
 
     }
 

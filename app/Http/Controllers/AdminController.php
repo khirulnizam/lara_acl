@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Role;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -40,6 +42,20 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         //
+
+        $role_admin = Role::where('name', 'admin')->first();
+        $role_participant  = Role::where('name', 'participant')->first();
+
+        $user = new User();
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $user->password = bcrypt($request['password']);
+        $user->save();
+        $user->roles()->attach($role_admin);
+
+        return back()->with('success',
+            'New admin has been created, named:'.$user->name);
+
     }
 
     /**

@@ -12,8 +12,6 @@ class TrainingTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-
         // $this->call(UsersTableSeeder::class);
 		DB::table('trainings')->insert([
             'trainingname' => 'Laravel 101',
