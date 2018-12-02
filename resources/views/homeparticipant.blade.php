@@ -18,9 +18,6 @@
 					<a href="{{ url('trainings') }}"> Training list</a>
 
 					<br>
-
-
-
                 </div>
             </div>
         </div>
