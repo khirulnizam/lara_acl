@@ -13,8 +13,14 @@ class CreateTrainersTable extends Migration
      */
     public function up()
     {
-        Schema::create('trainers', function (Blueprint $table) {
+        Schema::create('trainers', function 
+                (Blueprint $table) {
             $table->increments('id');
+            $table->string('tname');
+            $table->string('texpertise');
+            $table->string('tphoto')->nullable();
+			$table->string('mime')->nullable();
+			$table->string('original')->nullable();
             $table->timestamps();
         });
     }
@@ -24,7 +30,7 @@ class CreateTrainersTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down()//rollback
     {
         Schema::dropIfExists('trainers');
     }

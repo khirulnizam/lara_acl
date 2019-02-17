@@ -34,6 +34,8 @@ Route::resource('registerreports','RegisterReportController');
 
 Route::resource('admins','AdminController');
 
+Route::resource('trainers','TrainerController');
+
 
 
 
